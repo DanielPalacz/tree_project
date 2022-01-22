@@ -14,9 +14,10 @@ pass_config = click.make_pass_decorator(Config, ensure=True)
 
 
 @click.command()
+@click.option('--yellow', is_flag=True, help="Boolean switch allowing to have yellow output.")
 @click.argument("dirname", type=str, default=".", required=False)
 @pass_config
-def cli(config, dirname):
+def cli(config, dirname, yellow):
     """tree-like python3 implementation
 
     python app.py DIRNAME (Optional)
@@ -25,7 +26,8 @@ def cli(config, dirname):
 
     """
     config.dirname = dirname
-    run(config.dirname)
+    print("\n", config.dirname, "\n", sep="")
+    run(dirname=config.dirname, yellow=bool(yellow))
 
 
 if __name__ == "__main__":
