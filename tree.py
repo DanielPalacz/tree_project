@@ -48,7 +48,8 @@ def run(dirname: str = ".", indentation: int = 0) -> None:
     :return: nothing
     """
     os.chdir(dirname)
-    for item_ in get_sorted_items(dirname):
+    _dir = "."
+    for item_ in get_sorted_items(_dir):
         if not item_.is_dir():
             print(" " * indentation, "-", item_.name)
         else:

@@ -25,6 +25,8 @@ def cli(config, dirname):
 
     """
     config.dirname = dirname
+    print("\n", config.dirname, "\n", sep="")
+    input()
     run(config.dirname)
 
 
