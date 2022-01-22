@@ -2,6 +2,11 @@ from pathlib import Path
 from typing import List
 import os
 
+from colorama import init, Fore
+
+
+init(convert=True)
+
 
 def get_sorted_subtitems(dirname: str = ".") -> List[str]:
     """
@@ -39,7 +44,7 @@ def get_sorted_items(dirname: str = ".") -> List[str]:
     return get_sorted_subtitems(dirname) + get_sorted_dirs(dirname)
 
 
-def run(dirname: str = ".", indentation: int = 0) -> None:
+def run(dirname: str = ".", indentation: int = 0, yellow: bool = None) -> None:
     """
     Description:
     -- run tree aplication
@@ -47,6 +52,8 @@ def run(dirname: str = ".", indentation: int = 0) -> None:
     :type dirname: str
     :return: nothing
     """
+    if yellow:
+        print(Fore.LIGHTYELLOW_EX + "", end="")
     os.chdir(dirname)
     _dir = "."
     for item_ in get_sorted_items(_dir):
